@@ -9,8 +9,8 @@ const client = new DiscordClient({
 
 client.commands = new Collection();
 
-const eventFiles = readdirSync("./src/events").filter((file) =>
-  file.endsWith(".ts")
+const eventFiles = readdirSync("./src/events").filter(
+  (file: any) => file.endsWith(".ts") || file.endsWith(".js")
 );
 
 for (const file of eventFiles) {
