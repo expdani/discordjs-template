@@ -1,6 +1,6 @@
 # About
 
-It's a simple TypeScript written Discord.JS v14 bot you can easily add commands to. See echo.ts as an example. It automaticly updates the slash commands with the Discord API.
+It's a simple TypeScript written Discord.JS v14 bot you can easily add commands to by creating a new TypeScript file in the commands folder. See echo.ts as an example. It automaticly updates the slash commands with the Discord API.
 
 ## Requirements
 
