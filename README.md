@@ -1,21 +1,17 @@
 # About
 
-I created a few bots with discord.js and thought having a template would be convenient for me.
-No automatic deployments yet as most of my bots are run locally for private servers.
-That will be added to the template should I require it in the future, though!
-## Included Features 
+It's a simple TypeScript written Discord.JS v14 bot you can easily add commands to. See echo.ts as an example. It automaticly updates the slash commands with the Discord API.
 
-- [x] Slash commands
-- [x] semantic-release for auto tagging
-- [ ] Jest for testing
-- [ ] Deployment
+## Requirements
 
-## Setup
+- An editor with TypeScript support ([Visual Studio Code](https://code.visualstudio.com/)) is recommended.
+- [Yarn](https://classic.yarnpkg.com/en/docs/install/)
+- [Node](https://nodejs.org/en/download/) (v16.9 or higher)
 
-1. Install Node 16 ([nvm](https://github.com/nvm-sh/nvm) recommended)
-2. `npm ci`
-3. `cp config.example.json config.json` and update the values
-4. `npm run update`
-5. `npm start`
+## Getting started
+
+1. `yarn`
+2. `cp .env-example .env` and update the values
+3. `yarn dev`
 
 More information can be found at: https://discordjs.guide/

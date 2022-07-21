@@ -1,16 +1,18 @@
 import { readdirSync } from "fs";
-import { Client, Collection, IntentsBitField } from "discord.js";
+import { Collection, GatewayIntentBits } from "discord.js";
 import { env } from "../environment";
+import { DiscordClient } from "./classes/discord";
 
-const client = new Client({
-  intents: [IntentsBitField.Flags.Guilds],
+const client = new DiscordClient({
+  intents: [GatewayIntentBits.Guilds],
 });
 
-export const commands = new Collection();
+client.commands = new Collection();
 
 const eventFiles = readdirSync("./src/events").filter((file) =>
   file.endsWith(".ts")
 );
+
 for (const file of eventFiles) {
   const eventName = file.split(".")[0];
   const event = require(`./events/${file}`);
@@ -27,10 +29,10 @@ process.on("SIGINT", () => {
   process.exit(0);
 });
 
-client.login(env.DISCORD_API_KEY_DEV);
+client.login(env.DISCORD_API_KEY);
 
-client.on('ready', () => {
-  console.log("Logged in.");
-})
+client.on("ready", () => {
+  console.log(`Logged in as ${client.user.tag}!`);
+});
 
 module.exports = client;

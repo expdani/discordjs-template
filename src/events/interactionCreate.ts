@@ -1,26 +1,16 @@
-import { commands } from "..";
+import { InteractionType } from "discord.js";
 
 module.exports = {
   once: false,
   execute: (client: any, interaction: any) => {
-    if (!interaction.isCommand() && !interaction.isContextMenu()) return;
+    if (interaction.type != InteractionType.ApplicationCommand) return;
 
     try {
-      if (interaction.isCommand()) {
-        return commands.get(interaction.commandName)?.execute(interaction);
+      if (interaction.type === InteractionType.ApplicationCommand) {
+        return client.commands
+          .get(interaction.commandName)
+          ?.execute(interaction);
       }
-
-      // if (interaction.isModalSubmit()) {
-      //   return client.modals.get(`modal-${interaction.customId}`)?.execute(interaction);
-      // }
-
-      // if (interaction.isContextMenu()) {
-      //   return client.contextMenus.get(`context-${interaction.customId}`)?.execute(interaction);
-      // }
-
-      // if (interaction.isSelectMenu()) {
-      //   return client.selectMenus.get(`select-${interaction.customId}`)?.execute(interaction);
-      // }
     } catch (err) {
       console.error(err);
     }
