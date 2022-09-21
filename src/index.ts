@@ -1,7 +1,8 @@
 import { readdirSync } from "fs";
-import { Collection, GatewayIntentBits } from "discord.js";
+import { Collection, DiscordAPIError, GatewayIntentBits } from "discord.js";
 import { env } from "../environment";
 import { DiscordClient } from "./classes/discord";
+import Exception from "./exceptions/Exception";
 
 const client = new DiscordClient({
   intents: [GatewayIntentBits.Guilds],
@@ -29,7 +30,14 @@ process.on("SIGINT", () => {
   process.exit(0);
 });
 
-client.login(env.DISCORD_API_KEY);
+client.login(env.DISCORD_API_KEY).catch((reason: any) => {
+  throw new Exception(
+    "Discord API Connection Failed",
+    reason instanceof Exception || reason instanceof DiscordAPIError
+      ? reason
+      : new Exception(reason)
+  );
+});
 
 client.on("ready", () => {
   console.log(`Logged in as ${client.user.tag}!`);

@@ -7,17 +7,20 @@
     "start": "node -r ts-node/register ./src/index.ts",
     "dev": "nodemon",
     "update": "ts-node src/commands/index.ts",
-    "build": "tsc"
+    "build": "tsc",
+    "lint": "eslint src environment.ts",
+    "lint:fix": "eslint src environment.ts --fix"
   },
   "author": "expdani",
   "license": "MIT",
   "dependencies": {
     "@discordjs/rest": "^0.1.0-canary.0",
     "discord-api-types": "^0.36.2",
-    "discord.js": "^14.0.2",
+    "discord.js": "^14.4.0",
     "dotenv": "^16.0.1",
     "ts-node": "^10.2.1",
-    "typescript": "^4.4.3"
+    "typescript": "^4.4.3",
+    "eslint": "^8.20.0"
   },
   "devDependencies": {
     "nodemon": "2.0.2"
