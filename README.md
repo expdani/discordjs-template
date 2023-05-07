@@ -1,6 +1,6 @@
 ## About
 
-It's a simple TypeScript written Discord.JS v14.4.0 bot you can easily add commands and events to. It automaticly updates the slash commands with the Discord API.
+It's a simple TypeScript written Discord.JS v14.11.0 bot you can easily add commands and events to. It automaticly updates the slash commands with the Discord API.
 
 ## How to use
 ### Creating a command
