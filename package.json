@@ -14,9 +14,9 @@
   "author": "expdani",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/rest": "^0.1.0-canary.0",
-    "discord-api-types": "^0.36.2",
-    "discord.js": "^14.4.0",
+    "@discordjs/rest": "^1.7.1",
+    "discord-api-types": "^0.37.41",
+    "discord.js": "^14.11.0",
     "dotenv": "^16.0.1",
     "ts-node": "^10.2.1",
     "typescript": "^4.4.3",
