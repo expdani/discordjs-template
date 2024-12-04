@@ -12,6 +12,7 @@
     "lint": "eslint src environment.ts",
     "lint:fix": "eslint src environment.ts --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,js,json,md}\"",
     "prepare": "husky install"
   },
   "author": "expdani",
