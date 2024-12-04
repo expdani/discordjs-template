@@ -16,10 +16,10 @@ export const execute = async (client: DiscordClient) => {
   try {
     const { commands, application } = client;
     console.log(`Logged in as ${client.user?.tag}!`);
-    console.log('Loading commands...');
+    console.log("Loading commands...");
 
     const commandFiles = readdirSync("./src/commands").filter(
-      (file: string) => file.endsWith(".ts") || file.endsWith(".js")
+      (file: string) => file.endsWith(".ts") || file.endsWith(".js"),
     );
 
     for (const file of commandFiles) {
@@ -32,16 +32,16 @@ export const execute = async (client: DiscordClient) => {
       }
     }
 
-    const commandData = commands.map((command) => command.data) as ApplicationCommandDataResolvable[];
-    
+    const commandData = commands.map(command => command.data) as ApplicationCommandDataResolvable[];
+
     if (!application?.commands) {
-      throw new Error('Application commands are not available');
+      throw new Error("Application commands are not available");
     }
 
     console.log(`Registering ${commandData.length} commands with Discord...`);
     await application.commands.set(commandData);
-    console.log('✓ Successfully registered all commands!');
+    console.log("✓ Successfully registered all commands!");
   } catch (error) {
-    console.error('Failed to initialize bot:', error);
+    console.error("Failed to initialize bot:", error);
   }
 };

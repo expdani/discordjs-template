@@ -3,13 +3,16 @@
   "version": "0.0.0-development",
   "description": "",
   "main": "index.ts",
+  "type": "module",
   "scripts": {
     "start": "node -r ts-node/register ./src/index.ts",
     "dev": "nodemon",
     "update": "ts-node src/commands/index.ts",
     "build": "tsc",
     "lint": "eslint src environment.ts",
-    "lint:fix": "eslint src environment.ts --fix"
+    "lint:fix": "eslint src environment.ts --fix",
+    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
+    "prepare": "husky install"
   },
   "author": "expdani",
   "license": "MIT",
@@ -23,7 +26,15 @@
     "typescript": "5.7.2"
   },
   "devDependencies": {
-    "nodemon": "3.1.7"
+    "@eslint/js": "^9.16.0",
+    "@types/node": "^20.11.24",
+    "@typescript-eslint/eslint-plugin": "^8.17.0",
+    "@typescript-eslint/parser": "^8.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "nodemon": "3.1.7",
+    "prettier": "^3.2.5"
   },
   "nodemonConfig": {
     "ignore": [
@@ -35,7 +46,16 @@
     "watch": [
       "src"
     ],
-    "exec": "npm start",
+    "exec": "node -r ts-node/register ./src/index.ts",
     "ext": "ts"
+  },
+  "lint-staged": {
+    "*.{ts,js}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
   }
 }

@@ -4,7 +4,7 @@ import {
   InteractionReplyOptions,
   Colors,
 } from "discord.js";
-import {  CommandOptions } from "../types/Command";
+import { CommandOptions } from "../types/Command";
 
 /** Base Command Interface */
 export interface IBaseCommand {
@@ -25,7 +25,7 @@ export abstract class BaseCommand implements IBaseCommand {
     this.options = {
       enabled: true,
       cooldown: 0,
-      ...options
+      ...options,
     };
   }
 
@@ -38,9 +38,9 @@ export abstract class BaseCommand implements IBaseCommand {
   protected async reply(
     interaction: ChatInputCommandInteraction,
     content: string | EmbedBuilder | InteractionReplyOptions,
-    ephemeral = false
+    ephemeral = false,
   ): Promise<void> {
-    if (typeof content === 'string') {
+    if (typeof content === "string") {
       await interaction.reply({ content, ephemeral });
     } else if (content instanceof EmbedBuilder) {
       await interaction.reply({ embeds: [content], ephemeral });
@@ -57,15 +57,15 @@ export abstract class BaseCommand implements IBaseCommand {
    */
   protected async sendSuccessEmbed(
     interaction: ChatInputCommandInteraction,
-    title: string, 
-    description?: string
+    title: string,
+    description?: string,
   ): Promise<void> {
     const embed = new EmbedBuilder()
       .setTitle(title)
-      .setDescription(description || '')
+      .setDescription(description || "")
       .setColor(Colors.Green)
       .setTimestamp();
-    
+
     await this.reply(interaction, embed, true);
   }
 
@@ -77,16 +77,16 @@ export abstract class BaseCommand implements IBaseCommand {
    */
   protected async sendErrorEmbed(
     interaction: ChatInputCommandInteraction,
-    title: string, 
-    description?: string
+    title: string,
+    description?: string,
   ): Promise<void> {
-    console.error(`[Error Embed] ${title}: ${description || 'No description provided'}`);
+    console.error(`[Error Embed] ${title}: ${description || "No description provided"}`);
     const embed = new EmbedBuilder()
       .setTitle(title)
-      .setDescription(description || '')
+      .setDescription(description || "")
       .setColor(Colors.Red)
       .setTimestamp();
-    
+
     await this.reply(interaction, embed, true);
   }
 
@@ -98,15 +98,15 @@ export abstract class BaseCommand implements IBaseCommand {
    */
   protected async sendInfoEmbed(
     interaction: ChatInputCommandInteraction,
-    title: string, 
-    description?: string
+    title: string,
+    description?: string,
   ): Promise<void> {
     const embed = new EmbedBuilder()
       .setTitle(title)
-      .setDescription(description || '')
+      .setDescription(description || "")
       .setColor(Colors.Blue)
       .setTimestamp();
-    
+
     await this.reply(interaction, embed, true);
   }
 
@@ -116,18 +116,18 @@ export abstract class BaseCommand implements IBaseCommand {
    * @param error The error that was caught
    */
   protected async handleError(
-    interaction: ChatInputCommandInteraction, 
-    error: Error
+    interaction: ChatInputCommandInteraction,
+    error: Error,
   ): Promise<void> {
     console.error(`[Command Error] ${error.name}: ${error.message}`);
     if (error.stack) {
       console.error(error.stack);
     }
-    
+
     await this.sendErrorEmbed(
       interaction,
-      "Command Error", 
-      "An unexpected error occurred while executing this command."
+      "Command Error",
+      "An unexpected error occurred while executing this command.",
     );
   }
 }

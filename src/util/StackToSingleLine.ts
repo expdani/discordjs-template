@@ -6,7 +6,7 @@ export const StackToSingleLine = (excetion: Exception) => {
     .split("\r\n")
     .join("\n")
     .split("\n")
-    .filter((v) => {
+    .filter(v => {
       if (v.startsWith("Created")) {
         state = 1;
         return true;

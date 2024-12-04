@@ -1,8 +1,4 @@
-import {
-  CacheType,
-  ChatInputCommandInteraction,
-  SlashCommandBuilder,
-} from "discord.js";
+import { CacheType, ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { BaseCommand, IBaseCommand } from "../classes/BaseCommand";
 
 /*
@@ -12,13 +8,13 @@ export class Command extends BaseCommand implements IBaseCommand {
   data = new SlashCommandBuilder()
     .setName("echo")
     .setDescription("Echoes the message you give.")
-    .addStringOption((option) =>
+    .addStringOption(option =>
       option
         .setName("message")
         .setDescription("The message to echo back")
         .setRequired(true)
         .setMinLength(1)
-        .setMaxLength(2000)
+        .setMaxLength(2000),
     );
 
   async execute(interaction: ChatInputCommandInteraction<CacheType>): Promise<void> {
