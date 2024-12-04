@@ -1,5 +1,5 @@
 import { CacheType, ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
-import { BaseCommand, IBaseCommand } from "../classes/BaseCommand";
+import { BaseCommand, IBaseCommand } from "../../classes/BaseCommand";
 
 /*
   This is an example interaction command that echoes your message.

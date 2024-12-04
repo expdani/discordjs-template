@@ -18,19 +18,33 @@ export const execute = async (client: DiscordClient) => {
     console.log(`Logged in as ${client.user?.tag}!`);
     console.log("Loading commands...");
 
-    const commandFiles = readdirSync("./src/commands").filter(
-      (file: string) => file.endsWith(".ts") || file.endsWith(".js"),
-    );
+    const loadCommandsFromDirectory = (dir: string) => {
+      const entries = readdirSync(dir, { withFileTypes: true });
 
-    for (const file of commandFiles) {
-      try {
-        const commandInteraction: BaseCommand = new (require(`../commands/${file}`).Command)();
-        commands.set(commandInteraction.data.name, commandInteraction);
-        console.log(`✓ Loaded command: ${commandInteraction.data.name}`);
-      } catch (error) {
-        console.error(`✗ Failed to load command from file ${file}:`, error);
+      for (const entry of entries) {
+        const fullPath = `${dir}/${entry.name}`;
+
+        if (entry.isDirectory()) {
+          loadCommandsFromDirectory(fullPath);
+          continue;
+        }
+
+        if (!entry.name.endsWith(".ts") && !entry.name.endsWith(".js")) continue;
+
+        try {
+          const relativePath = fullPath.replace("./src/commands/", "");
+          const commandInteraction: BaseCommand = new (require(
+            `../commands/${relativePath}`,
+          ).Command)();
+          commands.set(commandInteraction.data.name, commandInteraction);
+          console.log(`✓ Loaded command: ${commandInteraction.data.name} from ${relativePath}`);
+        } catch (error) {
+          console.error(`✗ Failed to load command from file ${entry.name}:`, error);
+        }
       }
-    }
+    };
+
+    loadCommandsFromDirectory("./src/commands");
 
     const commandData = commands.map(command => command.data) as ApplicationCommandDataResolvable[];
 

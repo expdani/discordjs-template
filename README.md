@@ -6,7 +6,13 @@ It's a simple TypeScript written Discord.JS v14.16.3 bot you can easily add comm
 
 ### Creating a command
 
-To create a new command, you can simply create a new TypeScript file in the `commands` folder. You can use whatever name you like. See `echo.ts` as an example.
+To create a new command, you can create a TypeScript file either directly in the `commands` folder or within a category subfolder. For example:
+
+- `commands/echo.ts`
+- `commands/messages/echo.ts`
+- `commands/moderation/ban.ts`
+
+The command structure remains the same regardless of its location. See `commands/messages/echo.ts` as an example.
 
 ### Creating an event
 
