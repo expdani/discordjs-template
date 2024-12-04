@@ -15,15 +15,9 @@ export default class FileNotFoundException extends Exception {
    * @param furtherInfomation Further information to provide the user
    * @param provideStackTrace Should we show a stack trace?
    */
-  constructor(
-    file: string,
-    furtherInfomation?: string,
-    provideStackTrace?: boolean
-  ) {
+  constructor(file: string, furtherInfomation?: string, provideStackTrace?: boolean) {
     file = SanitizePath(file);
-    furtherInfomation = furtherInfomation
-      ? SanitizePath(furtherInfomation)
-      : furtherInfomation;
+    furtherInfomation = furtherInfomation ? SanitizePath(furtherInfomation) : furtherInfomation;
     super(
       `The file ${file} was not found.${
         furtherInfomation
@@ -31,7 +25,7 @@ export default class FileNotFoundException extends Exception {
 Further Information:
 ${furtherInfomation}`
           : ""
-      }`
+      }`,
     );
     this.name = "FileNotFoundException";
     if (!provideStackTrace) {

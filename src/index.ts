@@ -11,7 +11,7 @@ const client = new DiscordClient({
 client.commands = new Collection();
 
 const eventFiles = readdirSync("./src/events").filter(
-  (file: any) => file.endsWith(".ts") || file.endsWith(".js")
+  (file: any) => file.endsWith(".ts") || file.endsWith(".js"),
 );
 
 for (const file of eventFiles) {
@@ -35,7 +35,7 @@ client.login(env.DISCORD_API_KEY).catch((reason: any) => {
     "Discord API Connection Failed",
     reason instanceof Exception || reason instanceof DiscordAPIError
       ? reason
-      : new Exception(reason)
+      : new Exception(reason),
   );
 });
 

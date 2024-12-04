@@ -1,26 +1,19 @@
-import {
-  CacheType,
-  ChatInputCommandInteraction,
-  InteractionType,
-} from "discord.js";
+import { CacheType, ChatInputCommandInteraction, InteractionType } from "discord.js";
 import { DiscordClient } from "../classes/discord";
 
-module.exports = {
-  once: false,
-  execute: (
-    client: DiscordClient,
-    interaction: ChatInputCommandInteraction<CacheType>
-  ) => {
-    if (interaction.type != InteractionType.ApplicationCommand) return;
+export const once = false;
 
-    try {
-      if (interaction.type === InteractionType.ApplicationCommand) {
-        return client.commands
-          .get(interaction.commandName)
-          ?.execute(interaction);
-      }
-    } catch (err) {
-      console.error(err);
+export const execute = (
+  client: DiscordClient,
+  interaction: ChatInputCommandInteraction<CacheType>,
+) => {
+  if (interaction.type != InteractionType.ApplicationCommand) return;
+
+  try {
+    if (interaction.type === InteractionType.ApplicationCommand) {
+      return client.commands.get(interaction.commandName)?.execute(interaction);
     }
-  },
+  } catch (err) {
+    console.error(err);
+  }
 };

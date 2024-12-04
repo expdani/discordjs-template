@@ -16,12 +16,12 @@ DISCORD_API_KEY=
 
 # (Optional) List of owner/admin user-ids, seperated by commas
 ADMINS=656861522718621717,656861522718621717
-    `
+    `,
   );
   const envException = new EnvException(
     `No .env file found. Created a template .env file.
     Input your API key and other information there.`,
-    fileNotFoundEx
+    fileNotFoundEx,
   );
   StackToSingleLine(envException);
   throw envException;
