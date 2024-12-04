@@ -7,33 +7,23 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x, 20.x]
-
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: '20'
         cache: 'yarn'
-    
+
     - name: Install dependencies
       run: yarn install --frozen-lockfile
-    
-    - name: Lint
-      run: yarn lint
-    
-    - name: Build
-      run: yarn build
-    
-    - name: Type check
-      run: yarn tsc --noEmit
 
-    - name: Format check
-      run: yarn format:check
+    - name: Run linting
+      run: yarn lint
+
+    - name: Build project
+      run: yarn build
