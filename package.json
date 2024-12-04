@@ -14,16 +14,16 @@
   "author": "expdani",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/rest": "^1.7.1",
-    "discord-api-types": "^0.37.41",
-    "discord.js": "^14.11.0",
-    "dotenv": "^16.0.1",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.4.3",
-    "eslint": "^8.20.0"
+    "@discordjs/rest": "2.4.0",
+    "discord-api-types": "0.37.110",
+    "discord.js": "14.16.3",
+    "dotenv": "16.4.7",
+    "eslint": "9.16.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.2"
   },
   "devDependencies": {
-    "nodemon": "2.0.2"
+    "nodemon": "3.1.7"
   },
   "nodemonConfig": {
     "ignore": [
