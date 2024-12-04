@@ -1,6 +1,6 @@
 ## About
 
-It's a simple TypeScript written Discord.JS v14.11.0 bot you can easily add commands and events to. It automaticly updates the slash commands with the Discord API.
+It's a simple TypeScript written Discord.JS v14.16.3 bot you can easily add commands and events to. It automatically updates the slash commands with the Discord API.
 
 ## How to use
 
@@ -10,13 +10,13 @@ To create a new command, you can simply create a new TypeScript file in the `com
 
 ### Creating an event
 
-To create a new event, see the [Discord.JS Client documentation](https://discord.js.org/#/docs/main/stable/class/Client) for available events and create a new TypeScript file in the `events` folder with event name. For example: `createInteraction.ts` or `ready.ts`.
+To create a new event, see the [Discord.JS Client documentation](https://discord.js.org/docs/packages/discord.js/14.16.3) for available events and create a new TypeScript file in the `events` folder with event name. For example: `createInteraction.ts` or `ready.ts`.
 
 ## Requirements
 
 - An editor with TypeScript support ([Visual Studio Code](https://code.visualstudio.com/)) is recommended.
 - [Yarn](https://classic.yarnpkg.com/en/docs/install/)
-- [Node](https://nodejs.org/en/download/) (v16.9 or higher)
+- [Node](https://nodejs.org/en/download/) (v20.9 or higher is recommended)
 
 ## Getting started
 
