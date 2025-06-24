@@ -1,13 +1,13 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
-export interface CommandOptions {
+export type CommandOptions = {
   name: string;
   description: string;
   enabled?: boolean;
   cooldown?: number;
-}
+};
 
-export interface Command {
+export type Command = {
   data: SlashCommandBuilder;
   execute: (interaction: ChatInputCommandInteraction) => Promise<void>;
-}
+};
